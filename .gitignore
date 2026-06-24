@@ -1,0 +1,11 @@
+# Dependency Directories
+node_modules/
+
+# Environment Variables & Secrets
+.env
+
+# System Files (Optional but good practice)
+.DS_Store
+Thumbs.db   
+
+style.css
