@@ -1,0 +1,425 @@
+/* ==========================================================================
+   1. CORE VARIABLES (Vercel / GitHub Inspired Palette)
+   ========================================================================== */
+:root {
+    /* System Font Stack + Dev Monospace Stack */
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: "JetBrains Mono", "Fira Code", "SF Mono", Consolas, Menlo, monospace;
+
+    /* Light Theme - Clean SaaS Look */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9fafb; /* Slate 50 */
+    --text-main: #111827;    /* Slate 900 */
+    --text-muted: #4b5563;   /* Slate 600 */
+    
+    /* Primary Accent - Professional Tech Blue */
+    --accent: #2563eb;       /* Blue 600 */
+    --accent-hover: #1d4ed8; /* Blue 700 */
+    --accent-bg: #eff6ff;    /* Blue 50 */
+    
+    /* Structure */
+    --border-color: #e5e7eb; /* Slate 200 */
+    --radius-sm: 4px;
+    --radius-md: 6px;        /* Standard dev-tool border radius */
+    
+    /* Clean, tight shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    
+    --transition: 150ms ease-in-out;
+}
+
+/* Editor-Inspired Dark Mode */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-primary: #0d1117;   /* GitHub Dark Bg */
+        --bg-secondary: #161b22; /* GitHub Dark Surface */
+        --text-main: #c9d1d9;    /* GitHub Dark Text */
+        --text-muted: #8b949e;   /* GitHub Dark Muted */
+        --border-color: #30363d; /* GitHub Dark Border */
+        --accent: #58a6ff;       /* Tech Blue for Dark Mode */
+        --accent-hover: #79c0ff;
+        --accent-bg: rgba(56, 139, 253, 0.1);
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    }
+}
+
+/* ==========================================================================
+   2. RESET & BASE
+   ========================================================================== */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   3. NAVIGATION (Crisp & Minimal)
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: color-mix(in srgb, var(--bg-primary) 90%, transparent);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-color);
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+}
+
+.logo {
+    font-size: 1.25rem;
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--text-main);
+    letter-spacing: -0.02em;
+}
+
+.logo span {
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--text-main);
+}
+
+/* ==========================================================================
+   4. HERO SECTION (Tech Blueprint Vibe)
+   ========================================================================== */
+.hero {
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2rem;
+    margin-top: 60px;
+    /* Subtle dot-matrix/grid background for engineering feel */
+    background-image: radial-gradient(var(--border-color) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: center center;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    text-wrap: balance;
+}
+
+.highlight {
+    color: var(--accent);
+}
+
+.hero p {
+    font-size: clamp(1.1rem, 2vw, 1.25rem);
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+/* ==========================================================================
+   5. BUTTONS (Structured & Solid)
+   ========================================================================== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1.25rem;
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all var(--transition);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+.btn.primary {
+    background-color: var(--text-main);
+    color: var(--bg-primary);
+}
+
+.btn.primary:hover {
+    background-color: var(--text-muted);
+    transform: translateY(-1px);
+}
+
+.btn.secondary {
+    background-color: var(--bg-primary);
+    color: var(--text-main);
+    border-color: var(--border-color);
+    margin-left: 1rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.btn.secondary:hover {
+    background-color: var(--bg-secondary);
+    border-color: var(--text-muted);
+}
+
+/* ==========================================================================
+   6. SECTIONS
+   ========================================================================== */
+.section {
+  
+    text-align: center;
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.section.alt-bg {
+    background-color: var(--bg-secondary);
+    max-width: 100%;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.divider {
+    width: 40px;
+    height: 3px;
+    background-color: var(--accent);
+    border: none;
+    margin: 1.5rem auto 3rem auto;
+    border-radius: var(--radius-sm);
+}
+
+/* ==========================================================================
+   7. GRIDS & CARDS
+   ========================================================================== */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.skill-card {
+    background: var(--bg-primary);
+    padding: 2rem 1rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    text-align: center;
+    transition: border-color var(--transition);
+}
+
+.skill-card:hover {
+    border-color: var(--text-muted);
+}
+
+.skill-card i {
+    font-size: 2rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--text-muted);
+}
+
+/* THE ENGINEERING TOUCH: Monospace Tags 
+   Perfect for Python, Java, Flutter, etc.
+*/
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.5rem 0;
+    margin-top: auto;
+}
+
+.tag {
+    background-color: var(--bg-secondary);
+    color: var(--text-muted);
+    border: 1px solid var(--border-color);
+    padding: 0.2rem 0.6rem;
+    border-radius: var(--radius-sm);
+    font-family: var(--font-mono); /* Monospace font */
+    font-size: 0.75rem;
+}
+
+.card-links {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1.25rem;
+}
+
+.card-links a {
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color var(--transition);
+}
+
+.card-links a:hover {
+    color: var(--accent);
+}
+
+/* ==========================================================================
+   8. FORMS & CONTACT
+   ========================================================================== */
+.contact-container {
+    max-width: 500px;
+    align-items: center;
+    margin: 0 auto;
+    background: var(--bg-primary);
+    padding: 2rem;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: var(--bg-secondary);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    transition: border-color var(--transition);
+}
+
+.form-group input:focus, 
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background-color: var(--bg-primary);
+}
+
+.block-btn {
+    width: 100%;
+}
+
+.form-alert {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    text-align: center;
+}
+
+.status-success { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+.status-error { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+.status-loading { background: #fef9c3; color: #854d0e; border: 1px solid #fef08a; }
+
+/* ==========================================================================
+   9. FOOTER
+   ========================================================================== */
+.footer {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-secondary);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all var(--transition);
+}
+
+.contact-btn:hover {
+    background-color: var(--bg-primary);
+    border-color: var(--text-muted);
+}
